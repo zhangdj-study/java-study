@@ -24,4 +24,10 @@ public class StringLengthTest {
         System.out.println(s);
         System.out.println(s1);
     }
+
+    @Test
+    public void test2(){
+        String s = "";
+        System.out.println("".equals(s));
+    }
 }
