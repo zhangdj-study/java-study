@@ -9,16 +9,23 @@ import org.junit.Test;
 public class Main {
 
     @Test
-    public void stringBuffer(){
+    public void stringBuffer() {
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append("1");
     }
 
     @Test
     public void array() {
-        int[] arr = new int[]{2,3,4};
+        int[] arr = new int[]{2, 3, 4};
         arr[1] = 2;
         System.out.println(arr.length);
+    }
+
+    @Test
+    public void subStringTest() {
+        String fileUrl = "http://10.1.252.60/group1/M00/00/00/CgH8PF8n9HiAcn3rAAD_NbOj3to210.Jpg";
+        String fileUrlWithoutIp = fileUrl.substring(fileUrl.indexOf("/g") + 1);
+        String path = fileUrl.substring(fileUrl.indexOf("/") + 1);
     }
 
 }
