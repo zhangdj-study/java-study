@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author zhangdj
@@ -11,7 +12,14 @@ import java.util.List;
  */
 public class LambdaDemo2 {
 
-    private  List<User> userList = new ArrayList<>();
+    private static List<User> userList = new ArrayList<>();
+
+    static {
+        for (int i = 0; i < 5; i++) {
+            User user = new User(i, "name" + i, "address" + i, "phone" + i);
+            userList.add(user);
+        }
+    }
 
     @Test
     public void threadTest(){
@@ -56,5 +64,25 @@ public class LambdaDemo2 {
         }
         userList.stream().map(User::getUserAddress).flatMap(s -> userList.stream()).forEach(b -> System.out.println(b));
     }
+
+
+    @Test
+    public void filterTest() {
+        List<User> collect = userList.stream().filter(temp -> "qwe".equals(temp.getUserName())).limit(1).collect(Collectors.toList());
+        System.out.println(collect);
+    }
+
+    @Test
+    public void stream() {
+        // 传入lambda表达式的变量必须是final或者有效final
+        List<User> users = new ArrayList<>();
+        Integer i = 3;
+//        i++;
+        userList = userList.stream().filter(temp -> temp.getUserId() > i).collect(Collectors.toList());
+        userList.removeIf(temp -> temp.getUserId() == 3);
+        userList.stream().filter(temp -> temp.getUserId() > 1).collect(Collectors.toList());
+
+    }
+
 
 }
