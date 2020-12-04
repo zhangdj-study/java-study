@@ -13,10 +13,10 @@ import java.util.Properties;
  */
 public class JdbcUtil {
 
-    private static String url;
-    private static String user;
-    private static String password;
-    private static String driver;
+    public static String url;
+    public static String user;
+    public static String password;
+    public static String driver;
 
     /**
      * 文件读取，只会执行一次，使用静态代码块

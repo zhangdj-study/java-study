@@ -1,6 +1,9 @@
 package com.qyhy.tx;
 
+import com.qyhy.tx.configuration.SpringConfiguration;
+import com.qyhy.tx.service.UserService;
 import org.junit.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * @author zhangdj
@@ -10,6 +13,8 @@ public class TxTest {
 
     @Test
     public void t1() {
-        System.out.println(1);
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(SpringConfiguration.class);
+        UserService userService = ac.getBean(UserService.class);
+        userService.insertUser();
     }
 }

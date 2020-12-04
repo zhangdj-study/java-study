@@ -15,7 +15,7 @@ import java.util.List;
  * @date 2020/11/26
  * 幻读测试
  */
-public class PhantomTest {
+public class Phantom {
 
     public static void insertOnConditional(User user) {
         try {
