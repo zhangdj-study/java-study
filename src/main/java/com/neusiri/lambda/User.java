@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -14,4 +16,12 @@ public class User {
     private String userName;
     private String userAddress;
     private String userPhone;
+    private List<String> bankCards;
+
+    public User(int userId, String userName, String userAddress, String userPhone) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userAddress = userAddress;
+        this.userPhone = userPhone;
+    }
 }

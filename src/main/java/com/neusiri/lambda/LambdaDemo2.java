@@ -56,13 +56,24 @@ public class LambdaDemo2 {
         userList.stream().map(a -> a.getUserAddress()).forEach(a -> System.out.println(a));
     }
 
+    /**
+     * flatMap可以操作深层次的集合
+     */
     @Test
     public void flatMap(){
-        for (int i = 0; i < 5; i++) {
-            User user = new User(i, "name" + i, "address" + i, "phone" + i);
-            userList.add(user);
-        }
-        userList.stream().map(User::getUserAddress).flatMap(s -> userList.stream()).forEach(b -> System.out.println(b));
+        // 为每个User对象的bankCards赋值
+        userList.forEach(a -> {
+            List<String> bankCards = new ArrayList<>();
+            bankCards.add("bk1");
+            bankCards.add("bk2");
+            a.setBankCards(bankCards);
+        });
+        // 操作每个User对象的每个bankCards
+        userList.stream().flatMap(a -> a.getBankCards().stream()).forEach(b -> {
+            b = b + "44";
+            System.out.println(b);
+        });
+        System.out.println(userList);
     }
 
 
@@ -77,8 +88,10 @@ public class LambdaDemo2 {
         // 传入lambda表达式的变量必须是final或者有效final
         List<User> users = new ArrayList<>();
         Integer i = 3;
-//        i++;
-        userList = userList.stream().filter(temp -> temp.getUserId() > i).collect(Collectors.toList());
+        i++;
+        // 将i的值赋值给y 用y执行lambda表达式
+        int y = i;
+        userList = userList.stream().filter(temp -> temp.getUserId() > y).collect(Collectors.toList());
         userList.removeIf(temp -> temp.getUserId() == 3);
         userList.stream().filter(temp -> temp.getUserId() > 1).collect(Collectors.toList());
 

@@ -58,5 +58,13 @@ public class Main {
         System.out.println(hashtable);
     }
 
+    @Test
+    public void hashMapTest() {
+        HashMap<String, Object> map = new HashMap<>(10);
+        map.put("@q123","@qwe");
+        System.out.println(map);
+
+    }
+
 
 }

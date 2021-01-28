@@ -27,7 +27,7 @@ public class LambdaDemo1 {
         show(new LambdaDemo1()::noStaticMethod);
         //参数对象引用
         System.out.println("参数对象引用-----");
-        //等价于show((n, m) -> m.concat(m))
+        //等价于show((n, m) -> n.concat(m))
         show(String::concat);
 
     }
