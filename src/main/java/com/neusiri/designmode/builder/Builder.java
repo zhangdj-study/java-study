@@ -74,6 +74,7 @@ public class Builder<T> {
                 .with(GirlFriend::setMobile, "18688888888")
                 .with(GirlFriend::setEmail, "pretty-xiaomei@qq.com")
                 .with(GirlFriend::setHairColor, "浅棕色带点微卷")
+                .with(GirlFriend::setId,001L)
                 .build();
         System.out.println(myGirlFriend);
     }
