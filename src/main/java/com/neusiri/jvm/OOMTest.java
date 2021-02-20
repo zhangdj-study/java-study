@@ -15,10 +15,11 @@ public class OOMTest {
 
     public static void main(String[] args) {
         List<User> list = new ArrayList<>();
+        int i = 0;
+        int j = 0;
         while (true) {
-            User user = new User();
-            user.setUserAddress(UUID.randomUUID().toString());
-            list.add(user);
+            list.add(User.builder().userId(i++).userName(UUID.randomUUID().toString()).build());
+            User.builder().userId(j--).build();
         }
     }
 }

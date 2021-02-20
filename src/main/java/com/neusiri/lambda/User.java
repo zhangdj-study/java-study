@@ -24,4 +24,10 @@ public class User {
         this.userAddress = userAddress;
         this.userPhone = userPhone;
     }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        System.out.println("即将被回收" + this);
+    }
 }
