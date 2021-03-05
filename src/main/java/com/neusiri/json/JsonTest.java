@@ -1,6 +1,7 @@
 package com.neusiri.json;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -14,9 +15,9 @@ public class JsonTest {
     public static void main(String[] args) {
         String s = "{\"rid\":\"1\"}";
         String s2 = "[{\"k1\":\"v1\"},{\"k2\":\"v2\"}]";
-//        JSONObject jsonObject = JSONObject.parseObject(s);
-//        Object rid = jsonObject.get("rid");
-//        System.out.println(rid);
+        JSONObject jsonObject = JSONObject.parseObject(s);
+        Object rid = jsonObject.get("rid");
+        System.out.println(rid);
         Object parse = JSONArray.parse(s2);
         System.out.println(parse);
     }
