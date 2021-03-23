@@ -6,8 +6,10 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * @author zhangdj
@@ -20,16 +22,18 @@ public class ProbabilityTest {
     public static final int CYCLE_TIMES = 10000000;
     Random random = new Random();
 
-    @Test
-    public void t1() {
+    static List<Entity> list = new ArrayList<>();
 
-        List<Entity> list = new ArrayList<>();
+    static {
         list.add(Builder.of(Entity::new).with(Entity::setId, 1).with(Entity::setWeight, 360).build());
         list.add(Builder.of(Entity::new).with(Entity::setId, 2).with(Entity::setWeight, 160).build());
         list.add(Builder.of(Entity::new).with(Entity::setId, 3).with(Entity::setWeight, 160).build());
         list.add(Builder.of(Entity::new).with(Entity::setId, 4).with(Entity::setWeight, 160).build());
         list.add(Builder.of(Entity::new).with(Entity::setId, 5).with(Entity::setWeight, 160).build());
+    }
 
+    @Test
+    public void t1() {
         int count1 = 0;
         int count2 = 0;
         int count3 = 0;
@@ -92,7 +96,22 @@ public class ProbabilityTest {
     public void divide() {
         float a = 100f;
         float b = 3f;
-        System.out.println(a/b);
+        System.out.println(a / b);
+    }
 
+    @Test
+    public void listSumTest() {
+        IntSummaryStatistics collect = list.stream().collect(Collectors.summarizingInt(Entity::getId));
+        System.out.println(collect);
+    }
+
+    @Test
+    public void exponentialIncrease() {
+        int count = 3;
+        int result = 2;
+        for (int i = 0; i < 5-1; i++) {
+            result *= 2;
+        }
+        System.out.println(result);
     }
 }

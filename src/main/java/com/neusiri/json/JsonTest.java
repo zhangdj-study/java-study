@@ -2,9 +2,12 @@ package com.neusiri.json;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.neusiri.designmode.builder.Builder;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -35,5 +38,15 @@ public class JsonTest {
 
         System.out.println(user1);
 
+    }
+
+    @Test
+    public void listToJsonString() {
+        List<User> users = new ArrayList<>();
+        users.add(Builder.of(User::new).with(User::setId, 1L).with(User::setName, "zsd").build());
+        users.add(Builder.of(User::new).with(User::setId, 1L).with(User::setName, "zsd").build());
+        users.add(Builder.of(User::new).with(User::setId, 1L).with(User::setName, "zsd").build());
+        String string = JSONArray.toJSONString(users);
+        System.out.println(string);
     }
 }

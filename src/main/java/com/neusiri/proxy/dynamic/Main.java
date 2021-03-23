@@ -1,6 +1,9 @@
 package com.neusiri.proxy.dynamic;
 
 import org.junit.Test;
+import sun.misc.ProxyGenerator;
+
+import java.io.FileOutputStream;
 
 /**
  * 动态代理测试类
@@ -31,6 +34,15 @@ public class Main {
         MyInterFace interFace = (MyInterFace) proxy.createProxyInstance();
         interFace.method();
 
+    }
+
+    @Test
+    public void getProxyClass() throws Exception {
+        byte[] bytes = ProxyGenerator.generateProxyClass("$ProxyTest", new Class[]{MyInterFace.class});
+        FileOutputStream outputStream = new FileOutputStream("D://$ProxyTest.class");
+        outputStream.write(bytes);
+        outputStream.flush();
+        outputStream.close();
     }
 
 }
