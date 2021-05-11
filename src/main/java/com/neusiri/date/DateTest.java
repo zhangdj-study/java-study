@@ -3,6 +3,7 @@ package com.neusiri.date;
 import org.junit.Test;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -76,6 +77,17 @@ public class DateTest {
         System.out.println(current > beginTime);
         System.out.println(current < endTime);
         System.out.println(current >= beginTime && current < endTime);
+    }
+
+    @Test
+    public void dateYYYY() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2019, Calendar.DECEMBER, 31);
+
+        Date testDate = calendar.getTime();
+
+        SimpleDateFormat dtf = new SimpleDateFormat("YYYY-MM-dd");
+        System.out.println("2019-12-31 转 YYYY-MM-dd 格式后 " + dtf.format(testDate));
     }
 
 }
