@@ -31,6 +31,9 @@ public class EmojiTest {
     @Test
     public void t2() {
         System.out.println("\uD83D\uDC49");
+        Integer a = 2;
+        a = null;
+        System.out.println(2 != a);
     }
 
 

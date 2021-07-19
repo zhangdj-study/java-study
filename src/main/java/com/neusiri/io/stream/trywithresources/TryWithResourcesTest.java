@@ -59,4 +59,14 @@ public class TryWithResourcesTest {
 
         }
     }
+
+    @Test
+    public void test4() {
+        try (SystemResource systemResource = new SystemResource()) {
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }

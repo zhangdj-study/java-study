@@ -1,4 +1,4 @@
-package java.llang;
+package java.lang;
 
 /**
  * @author zhangdj
