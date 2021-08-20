@@ -14,4 +14,8 @@ public class Main {
         };
         person.method();
     }
+
+    public void print() {
+        System.out.println("Aaaaaa");
+    }
 }

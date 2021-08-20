@@ -1,5 +1,6 @@
 package com.neusiri.json;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.neusiri.designmode.builder.Builder;
@@ -48,5 +49,13 @@ public class JsonTest {
         users.add(Builder.of(User::new).with(User::setId, 1L).with(User::setName, "zsd").build());
         String string = JSONArray.toJSONString(users);
         System.out.println(string);
+    }
+
+    @Test
+    public void jsonToList() {
+
+        String s = "[\"10,1,2\",\"10,1,3\",\"5,1\"]";
+        List<HashMap> hashMaps = JSON.parseArray(s, HashMap.class);
+        System.out.println(hashMaps);
     }
 }
